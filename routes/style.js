@@ -4,7 +4,7 @@ const { validate } = require('@mapbox/mapbox-gl-style-spec');
 
 const router = new Router();
 
-router.get('style/:styleid', async (ctx) => {
+router.get('/style/:styleid', async (ctx) => {
   const { styleCache } = ctx.app;
   const { styleid } = ctx.params;
   const style = styleCache.get(styleid);
