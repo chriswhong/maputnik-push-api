@@ -11,8 +11,8 @@ app.use(cors({
   origin: '*',
 }));
 
-// use node-cache to store SQL queries
-app.styleCache = new NodeCache({ stdTTL: 3600 });
+// use node-cache to store SQL queries, time to live = 30 minutes
+app.styleCache = new NodeCache({ stdTTL: 1800 });
 
 // better error handling
 app.use(async (ctx, next) => {
@@ -27,4 +27,5 @@ app.use(async (ctx, next) => {
 
 app.use(styleRoute.routes());
 
+console.log(`Maputnik Push API listening on port ${process.env.PORT || 3000}`); // eslint-disable-line
 module.exports = app.listen(process.env.PORT || 3000);
